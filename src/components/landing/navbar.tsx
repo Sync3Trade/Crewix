@@ -68,10 +68,10 @@ export function Navbar() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <ThemeToggle />
-            <Button variant="ghost" size="sm" href="#">
+            <Button variant="ghost" size="sm" href="/login">
               Log in
             </Button>
-            <Button size="sm" href="#pricing">
+            <Button size="sm" href="/signup">
               Start Free Trial
             </Button>
           </div>
@@ -104,10 +104,10 @@ export function Navbar() {
               </Link>
             ))}
             <div className="mt-3 flex flex-col gap-2 border-t border-border pt-4">
-              <Button variant="outline" href="#">
+              <Button variant="outline" href="/login">
                 Log in
               </Button>
-              <Button href="#pricing">Start Free Trial</Button>
+              <Button href="/signup">Start Free Trial</Button>
             </div>
           </Container>
         </div>

@@ -7,28 +7,88 @@ AI workforce platform that helps businesses automate calls, lead qualification, 
 - **Next.js** — React framework with App Router
 - **TypeScript** — Type-safe development
 - **Tailwind CSS** — Utility-first styling with dark/light mode
+- **PostgreSQL** — Primary database via Prisma ORM
+- **NextAuth.js** — Authentication with credentials
 - **Framer Motion** — Animations and transitions
-- **Lucide React** — Icon library
+- **Resend** — Transactional email (optional in development)
 
 ## Getting Started
 
+### 1. Install dependencies
+
 ```bash
 npm install
+```
+
+### 2. Start PostgreSQL
+
+```bash
+docker compose up -d
+```
+
+### 3. Configure environment
+
+Copy `.env.example` to `.env` and update values as needed:
+
+```bash
+cp .env.example .env
+```
+
+Generate a secure `AUTH_SECRET`:
+
+```bash
+openssl rand -base64 32
+```
+
+### 4. Set up the database
+
+```bash
+npm run db:push
+```
+
+### 5. Run the development server
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the landing page.
+Open [http://localhost:3000](http://localhost:3000).
+
+## Authentication Flow
+
+1. **Sign up** at `/signup` — creates account and sends verification email
+2. **Verify email** — click link in email (or check console in dev mode)
+3. **Sign in** at `/login`
+4. **Onboarding** at `/onboarding` — 5-step setup wizard
+5. **Dashboard** at `/dashboard` — placeholder until full dashboard is built
+
+## Auth Routes
+
+| Route | Description |
+|-------|-------------|
+| `/signup` | Create a new account |
+| `/login` | Sign in |
+| `/forgot-password` | Request password reset |
+| `/reset-password?token=...` | Set new password |
+| `/verify-email` | Email verification |
+| `/onboarding` | Post-signup onboarding wizard |
 
 ## Project Structure
 
 ```
 src/
-├── app/                    # Next.js App Router pages and layout
+├── app/
+│   ├── (auth)/           # Auth pages (login, signup, etc.)
+│   ├── api/              # API routes (auth, onboarding)
+│   ├── dashboard/        # Protected dashboard placeholder
+│   └── onboarding/       # Onboarding wizard
 ├── components/
-│   ├── landing/            # Landing page sections
-│   ├── providers/          # React context providers
-│   └── ui/                 # Reusable UI components
-└── lib/                    # Utilities and helpers
+│   ├── auth/             # Auth forms and layout
+│   ├── landing/          # Marketing page sections
+│   ├── onboarding/       # Onboarding wizard
+│   └── ui/               # Reusable UI components
+├── lib/                  # Auth, database, email, validations
+└── middleware.ts         # Route protection
 ```
 
 ## Scripts
@@ -39,7 +99,10 @@ src/
 | `npm run build` | Build for production |
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
+| `npm run db:push` | Push Prisma schema to database |
+| `npm run db:migrate` | Run database migrations |
+| `npm run db:studio` | Open Prisma Studio |
 
-## Version 1 Scope
+## Email in Development
 
-This release includes the premium marketing landing page. Authentication, dashboard, and backend features will be added in subsequent releases.
+Without a `RESEND_API_KEY`, verification and password reset emails are logged to the server console. Check your terminal for links when testing locally.
