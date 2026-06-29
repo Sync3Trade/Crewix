@@ -3,69 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SectionHeader } from "@/components/ui/section-header";
+import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { useState } from "react";
-
-const plans = [
-  {
-    name: "Starter",
-    description: "Perfect for solo operators and small teams getting started with AI.",
-    monthlyPrice: 149,
-    yearlyPrice: 119,
-    features: [
-      "1 AI employee",
-      "500 minutes/month",
-      "Call answering & lead qualification",
-      "Appointment booking",
-      "SMS follow-ups (100/month)",
-      "Email notifications",
-      "Basic analytics",
-      "Email support",
-    ],
-    cta: "Start Free Trial",
-    popular: false,
-  },
-  {
-    name: "Growth",
-    description: "For growing businesses that need more capacity and automation.",
-    monthlyPrice: 349,
-    yearlyPrice: 279,
-    features: [
-      "3 AI employees",
-      "2,000 minutes/month",
-      "Everything in Starter",
-      "Advanced lead scoring",
-      "Unlimited SMS follow-ups",
-      "Email automation sequences",
-      "CRM integrations",
-      "Custom scripts & workflows",
-      "Priority support",
-    ],
-    cta: "Start Free Trial",
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    description: "For multi-location businesses with complex communication needs.",
-    monthlyPrice: null,
-    yearlyPrice: null,
-    features: [
-      "Unlimited AI employees",
-      "Unlimited minutes",
-      "Everything in Growth",
-      "Multi-location management",
-      "Custom AI training",
-      "Dedicated account manager",
-      "SLA guarantee",
-      "SSO & advanced security",
-      "API access",
-    ],
-    cta: "Contact Sales",
-    popular: false,
-  },
-];
 
 export function Pricing() {
   const [annual, setAnnual] = useState(true);
@@ -124,16 +66,16 @@ export function Pricing() {
           )}
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
-          {plans.map((plan, i) => (
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {PLANS.map((plan, i) => (
             <motion.div
-              key={plan.name}
+              key={plan.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
               className={cn(
-                "relative flex flex-col rounded-2xl border bg-card p-8",
+                "relative flex flex-col rounded-2xl border bg-card p-6",
                 plan.popular
                   ? "border-primary shadow-xl shadow-primary/10 ring-1 ring-primary/20"
                   : "border-border"
@@ -176,23 +118,25 @@ export function Pricing() {
                 )}
               </div>
 
-              <ul className="mt-8 flex-1 space-y-3">
+              <ul className="mt-6 flex-1 space-y-2.5">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-3">
+                  <li key={feature} className="flex items-start gap-2.5">
                     <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    <span className="text-sm text-muted-foreground">
-                      {feature}
-                    </span>
+                    <span className="text-sm text-muted-foreground">{feature}</span>
                   </li>
                 ))}
               </ul>
 
               <Button
-                className="mt-8 w-full"
+                className="mt-6 w-full"
                 variant={plan.popular ? "primary" : "outline"}
-                href="#"
+                href={
+                  plan.id === "enterprise"
+                    ? "mailto:sales@crewix.com"
+                    : `/signup?plan=${plan.id}`
+                }
               >
-                {plan.cta}
+                {plan.id === "enterprise" ? "Contact Sales" : "Start Free Trial"}
               </Button>
             </motion.div>
           ))}

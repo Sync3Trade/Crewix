@@ -59,6 +59,6 @@ export const config = {
     "/reset-password",
     "/verify-email",
     "/onboarding",
-    "/dashboard",
+    "/dashboard/:path*",
   ],
 };

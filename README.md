@@ -10,7 +10,8 @@ AI workforce platform that helps businesses automate calls, lead qualification, 
 - **PostgreSQL** — Primary database via Prisma ORM
 - **NextAuth.js** — Authentication with credentials
 - **Framer Motion** — Animations and transitions
-- **Resend** — Transactional email (optional in development)
+- **Stripe** — Subscription billing
+- **Recharts** — Dashboard analytics charts
 
 ## Getting Started
 
