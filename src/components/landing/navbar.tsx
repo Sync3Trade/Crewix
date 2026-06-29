@@ -47,10 +47,10 @@ export function Navbar() {
         <nav className="flex h-16 items-center justify-between lg:h-20">
           <Link href="/" className="flex items-center gap-2.5">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-brand shadow-lg shadow-primary/20">
-              <span className="font-display text-sm font-bold text-white">C</span>
+              <span className="font-display text-sm font-bold text-white">V</span>
             </div>
             <span className="font-display text-xl font-bold tracking-tight text-foreground">
-              Crewix
+              VertexWork
             </span>
           </Link>
 

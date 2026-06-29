@@ -5,8 +5,8 @@ import { VerifyEmailContent } from "@/components/auth/verify-email-content";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Verify Email — Crewix",
-  description: "Verify your Crewix account email address",
+  title: "Verify Email — VertexWork",
+  description: "Verify your VertexWork account email address",
 };
 
 function VerifyEmailFallback() {

@@ -7,7 +7,7 @@ import { auth } from "@/lib/auth";
 import { DollarSign, TrendingUp } from "lucide-react";
 import { redirect } from "next/navigation";
 
-export const metadata = { title: "Revenue — Crewix" };
+export const metadata = { title: "Revenue — VertexWork" };
 
 export default async function RevenuePage() {
   const session = await auth();

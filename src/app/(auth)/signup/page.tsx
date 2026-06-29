@@ -4,8 +4,8 @@ import { AuthLayout } from "@/components/auth/auth-layout";
 import { SignupForm } from "@/components/auth/signup-form";
 
 export const metadata = {
-  title: "Sign Up — Crewix",
-  description: "Create your Crewix account and hire AI employees",
+  title: "Sign Up — VertexWork",
+  description: "Create your VertexWork account and hire AI employees",
 };
 
 export default function SignupPage() {

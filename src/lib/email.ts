@@ -4,7 +4,7 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 
-const fromEmail = process.env.EMAIL_FROM ?? "Crewix <onboarding@crewix.com>";
+const fromEmail = process.env.EMAIL_FROM ?? "VertexWork <onboarding@vertexwork.com>";
 const appUrl = process.env.AUTH_URL ?? "http://localhost:3000";
 
 interface SendEmailOptions {
@@ -48,7 +48,7 @@ function emailLayout(content: string) {
               <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;overflow:hidden;">
                 <tr>
                   <td style="background:linear-gradient(135deg,#6366f1,#8b5cf6,#06b6d4);padding:32px;text-align:center;">
-                    <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">Crewix</h1>
+                    <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">VertexWork</h1>
                   </td>
                 </tr>
                 <tr>
@@ -59,7 +59,7 @@ function emailLayout(content: string) {
                 <tr>
                   <td style="padding:24px 32px;border-top:1px solid #e2e8f0;text-align:center;">
                     <p style="margin:0;color:#94a3b8;font-size:12px;">
-                      &copy; ${new Date().getFullYear()} Crewix, Inc. All rights reserved.
+                      &copy; ${new Date().getFullYear()} VertexWork, Inc. All rights reserved.
                     </p>
                   </td>
                 </tr>
@@ -85,18 +85,18 @@ export async function sendVerificationEmail(email: string, token: string) {
 
   await sendEmail({
     to: email,
-    subject: "Verify your Crewix email address",
+    subject: "Verify your VertexWork email address",
     html: emailLayout(`
       <h2 style="margin:0 0 16px;color:#0f172a;font-size:20px;">Verify your email</h2>
       <p style="margin:0 0 8px;color:#64748b;font-size:15px;line-height:1.6;">
-        Thanks for signing up for Crewix! Click the button below to verify your email address and activate your account.
+        Thanks for signing up for VertexWork! Click the button below to verify your email address and activate your account.
       </p>
       ${buttonHtml(verifyUrl, "Verify Email Address")}
       <p style="margin:0;color:#94a3b8;font-size:13px;line-height:1.6;">
         This link expires in 24 hours. If you didn't create an account, you can safely ignore this email.
       </p>
     `),
-    text: `Verify your Crewix email: ${verifyUrl}`,
+    text: `Verify your VertexWork email: ${verifyUrl}`,
   });
 }
 
@@ -105,7 +105,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
 
   await sendEmail({
     to: email,
-    subject: "Reset your Crewix password",
+    subject: "Reset your VertexWork password",
     html: emailLayout(`
       <h2 style="margin:0 0 16px;color:#0f172a;font-size:20px;">Reset your password</h2>
       <p style="margin:0 0 8px;color:#64748b;font-size:15px;line-height:1.6;">
@@ -116,7 +116,7 @@ export async function sendPasswordResetEmail(email: string, token: string) {
         This link expires in 1 hour. If you didn't request a password reset, you can safely ignore this email.
       </p>
     `),
-    text: `Reset your Crewix password: ${resetUrl}`,
+    text: `Reset your VertexWork password: ${resetUrl}`,
   });
 }
 
@@ -125,7 +125,7 @@ export async function sendWelcomeEmail(email: string, name: string) {
 
   await sendEmail({
     to: email,
-    subject: "Welcome to Crewix — let's set up your AI workforce",
+    subject: "Welcome to VertexWork — let's set up your AI workforce",
     html: emailLayout(`
       <h2 style="margin:0 0 16px;color:#0f172a;font-size:20px;">Welcome aboard, ${name}!</h2>
       <p style="margin:0 0 8px;color:#64748b;font-size:15px;line-height:1.6;">
@@ -136,6 +136,6 @@ export async function sendWelcomeEmail(email: string, name: string) {
         Need help? Reply to this email or visit our help center.
       </p>
     `),
-    text: `Welcome to Crewix! Complete setup: ${dashboardUrl}`,
+    text: `Welcome to VertexWork! Complete setup: ${dashboardUrl}`,
   });
 }

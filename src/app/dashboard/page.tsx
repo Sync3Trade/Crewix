@@ -18,7 +18,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Dashboard — Crewix",
+  title: "Dashboard — VertexWork",
 };
 
 function formatDuration(seconds: number) {

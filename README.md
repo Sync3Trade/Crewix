@@ -1,4 +1,4 @@
-# Crewix
+# VertexWork
 
 AI workforce platform that helps businesses automate calls, lead qualification, appointment booking, and customer communication.
 
@@ -61,7 +61,28 @@ Open [http://localhost:3000](http://localhost:3000).
 2. **Verify email** — click link in email (or check console in dev mode)
 3. **Sign in** at `/login`
 4. **Onboarding** at `/onboarding` — 5-step setup wizard
-5. **Dashboard** at `/dashboard` — placeholder until full dashboard is built
+5. **Dashboard** at `/dashboard` — business overview, calls, appointments, AI employees, analytics, revenue, and billing
+
+## Dashboard Routes
+
+| Route | Description |
+|-------|-------------|
+| `/dashboard` | Overview with key metrics |
+| `/dashboard/calls` | Call history and outcomes |
+| `/dashboard/appointments` | Booked appointments |
+| `/dashboard/ai-employees` | AI workforce management |
+| `/dashboard/analytics` | Performance charts |
+| `/dashboard/revenue` | Revenue tracking |
+| `/dashboard/billing` | Subscription and Stripe billing |
+
+## Stripe Setup
+
+1. Create products and prices in the [Stripe Dashboard](https://dashboard.stripe.com)
+2. Add price IDs to `.env` (see `.env.example`)
+3. Set up a webhook endpoint pointing to `/api/stripe/webhook`
+4. Enable the Customer Portal in Stripe settings
+
+Plans: **Starter** ($149), **Professional** ($349), **Business** ($699), **Enterprise** (custom)
 
 ## Auth Routes
 
@@ -80,11 +101,12 @@ Open [http://localhost:3000](http://localhost:3000).
 src/
 ├── app/
 │   ├── (auth)/           # Auth pages (login, signup, etc.)
-│   ├── api/              # API routes (auth, onboarding)
-│   ├── dashboard/        # Protected dashboard placeholder
+│   ├── api/              # API routes (auth, onboarding, stripe)
+│   ├── dashboard/        # Business dashboard
 │   └── onboarding/       # Onboarding wizard
 ├── components/
 │   ├── auth/             # Auth forms and layout
+│   ├── dashboard/        # Dashboard components
 │   ├── landing/          # Marketing page sections
 │   ├── onboarding/       # Onboarding wizard
 │   └── ui/               # Reusable UI components

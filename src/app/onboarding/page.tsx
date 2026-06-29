@@ -1,7 +1,7 @@
 import { OnboardingWizard } from "@/components/onboarding/onboarding-wizard";
 
 export const metadata = {
-  title: "Onboarding — Crewix",
+  title: "Onboarding — VertexWork",
   description: "Set up your AI workforce",
 };
 

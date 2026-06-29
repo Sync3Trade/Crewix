@@ -49,11 +49,11 @@ export function DashboardSidebar({
       <div className="border-b border-border p-6">
         <Link href="/dashboard" className="flex items-center gap-2.5">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-brand">
-            <span className="font-display text-sm font-bold text-white">C</span>
+            <span className="font-display text-sm font-bold text-white">V</span>
           </div>
           <div>
             <span className="font-display text-lg font-bold text-foreground">
-              Crewix
+              VertexWork
             </span>
             <p className="truncate text-xs text-muted-foreground">{businessName}</p>
           </div>
