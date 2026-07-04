@@ -41,11 +41,11 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-2.5">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-brand shadow-lg shadow-primary/20">
                 <span className="font-display text-sm font-bold text-white">
-                  C
+                  V
                 </span>
               </div>
               <span className="font-display text-xl font-bold tracking-tight text-foreground">
-                Crewix
+                VertexWork
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
@@ -80,7 +80,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Crewix, Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} VertexWork, Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link

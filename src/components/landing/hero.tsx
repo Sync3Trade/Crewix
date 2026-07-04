@@ -92,7 +92,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
           >
-            Crewix deploys AI-powered team members that answer calls, qualify
+            VertexWork deploys AI-powered team members that answer calls, qualify
             leads, book appointments, and follow up — so your business never
             misses an opportunity.
           </motion.p>
@@ -134,7 +134,7 @@ export function Hero() {
               <div className="h-3 w-3 rounded-full bg-amber-400" />
               <div className="h-3 w-3 rounded-full bg-emerald-400" />
               <span className="ml-2 text-xs font-medium text-muted-foreground">
-                Crewix Command Center
+                VertexWork Command Center
               </span>
               <div className="ml-auto flex items-center gap-1.5">
                 <span className="relative flex h-2 w-2">

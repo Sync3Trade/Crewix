@@ -1,3 +1,4 @@
+import { AuthSessionProvider } from "@/components/providers/session-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
@@ -16,9 +17,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Crewix — Hire AI Employees That Never Sleep",
+  title: "VertexWork — Hire AI Employees That Never Sleep",
   description:
-    "Crewix helps businesses hire AI employees that answer phone calls, qualify leads, book appointments, and automate customer communication. Start your free trial today.",
+    "VertexWork helps businesses hire AI employees that answer phone calls, qualify leads, book appointments, and automate customer communication. Start your free trial today.",
   icons: {
     icon: "/icon.svg",
   },
@@ -31,15 +32,15 @@ export const metadata: Metadata = {
     "SaaS",
   ],
   openGraph: {
-    title: "Crewix — Hire AI Employees That Never Sleep",
+    title: "VertexWork — Hire AI Employees That Never Sleep",
     description:
       "Deploy AI-powered team members that answer calls, qualify leads, book appointments, and follow up — 24/7.",
     type: "website",
-    siteName: "Crewix",
+    siteName: "VertexWork",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Crewix — Hire AI Employees That Never Sleep",
+    title: "VertexWork — Hire AI Employees That Never Sleep",
     description:
       "Deploy AI-powered team members that answer calls, qualify leads, book appointments, and follow up — 24/7.",
   },
@@ -55,7 +56,9 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${plusJakarta.variable} min-h-full font-sans antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <AuthSessionProvider>{children}</AuthSessionProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

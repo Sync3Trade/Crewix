@@ -16,7 +16,7 @@ const faqs = [
   {
     question: "How natural do the phone conversations sound?",
     answer:
-      "Crewix uses state-of-the-art voice AI that delivers human-like conversations with natural pauses, tone variation, and contextual understanding. Most callers can't tell they're speaking with AI. You can also customize the voice, personality, and script to match your brand.",
+      "VertexWork uses state-of-the-art voice AI that delivers human-like conversations with natural pauses, tone variation, and contextual understanding. Most callers can't tell they're speaking with AI. You can also customize the voice, personality, and script to match your brand.",
   },
   {
     question: "How long does setup take?",
@@ -26,17 +26,17 @@ const faqs = [
   {
     question: "Can I use my existing phone number?",
     answer:
-      "Yes. Crewix works with your existing business phone number through call forwarding or direct integration with supported VoIP providers. You can also provision a new number through Crewix if you prefer a dedicated line for AI-handled calls.",
+      "Yes. VertexWork works with your existing business phone number through call forwarding or direct integration with supported VoIP providers. You can also provision a new number through VertexWork if you prefer a dedicated line for AI-handled calls.",
   },
   {
     question: "What integrations do you support?",
     answer:
-      "Crewix integrates with popular CRMs (HubSpot, Salesforce, Zoho), calendar systems (Google Calendar, Outlook, Calendly), and communication tools. Enterprise plans include API access for custom integrations with your existing tech stack.",
+      "VertexWork integrates with popular CRMs (HubSpot, Salesforce, Zoho), calendar systems (Google Calendar, Outlook, Calendly), and communication tools. Enterprise plans include API access for custom integrations with your existing tech stack.",
   },
   {
     question: "Is my customer data secure?",
     answer:
-      "Absolutely. Crewix is built on SOC 2 compliant infrastructure with end-to-end encryption for all calls and data. We never sell or share your customer data. Enterprise plans include additional security features like SSO, audit logs, and data residency options.",
+      "Absolutely. VertexWork is built on SOC 2 compliant infrastructure with end-to-end encryption for all calls and data. We never sell or share your customer data. Enterprise plans include additional security features like SSO, audit logs, and data residency options.",
   },
   {
     question: "What happens during the free trial?",
@@ -105,7 +105,7 @@ export function Faq() {
         <SectionHeader
           badge="FAQ"
           title="Frequently asked questions"
-          description="Everything you need to know about hiring AI employees with Crewix."
+          description="Everything you need to know about hiring AI employees with VertexWork."
         />
 
         <div className="rounded-2xl border border-border bg-card px-6">
