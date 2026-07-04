@@ -5,8 +5,8 @@ import { LoginForm } from "@/components/auth/login-form";
 import { Suspense } from "react";
 
 export const metadata = {
-  title: "Sign In — Crewix",
-  description: "Sign in to your Crewix account",
+  title: "Sign In — VertexWork",
+  description: "Sign in to your VertexWork account",
 };
 
 function LoginFormFallback() {

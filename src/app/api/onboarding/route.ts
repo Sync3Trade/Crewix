@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
+import { ensureBusinessForUser } from "@/lib/business";
 import { sendWelcomeEmail } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 
@@ -57,6 +58,7 @@ export async function POST(request: Request) {
     });
 
     if (complete && session.user.email && session.user.name) {
+      await ensureBusinessForUser(session.user.id);
       await sendWelcomeEmail(session.user.email, session.user.name);
     }
 

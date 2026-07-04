@@ -70,7 +70,7 @@ export function Industries() {
         <SectionHeader
           badge="Industries"
           title="Built for businesses that live on the phone"
-          description="Whether you're a solo practitioner or a multi-location operation, Crewix adapts to your industry's unique workflows and customer expectations."
+          description="Whether you're a solo practitioner or a multi-location operation, VertexWork adapts to your industry's unique workflows and customer expectations."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -20,6 +20,7 @@ model User {
   accounts Account[]
   sessions Session[]
   onboarding Onboarding?
+  business   Business?
 
   @@map("users")
 }
@@ -90,4 +91,113 @@ model Onboarding {
   updatedAt    DateTime  @updatedAt @map("updated_at")
 
   @@map("onboarding")
+}
+
+model Business {
+  id        String   @id @default(cuid())
+  userId    String   @unique @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  industry  String?
+  phone     String?
+  website   String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  subscription   Subscription?
+  aiEmployees    AiEmployee[]
+  calls          Call[]
+  appointments   Appointment[]
+  revenueRecords RevenueRecord[]
+
+  @@map("businesses")
+}
+
+model Subscription {
+  id                   String    @id @default(cuid())
+  businessId           String    @unique @map("business_id")
+  business             Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  stripeCustomerId     String    @unique @map("stripe_customer_id")
+  stripeSubscriptionId String?   @unique @map("stripe_subscription_id")
+  stripePriceId        String?   @map("stripe_price_id")
+  plan                 String    @default("starter")
+  status               String    @default("trialing")
+  trialEndsAt          DateTime? @map("trial_ends_at")
+  currentPeriodStart   DateTime? @map("current_period_start")
+  currentPeriodEnd     DateTime? @map("current_period_end")
+  cancelAtPeriodEnd    Boolean   @default(false) @map("cancel_at_period_end")
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime  @updatedAt @map("updated_at")
+
+  @@map("subscriptions")
+}
+
+model AiEmployee {
+  id                 String   @id @default(cuid())
+  businessId         String   @map("business_id")
+  business           Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  name               String
+  role               String
+  status             String   @default("active")
+  callsHandled       Int      @default(0) @map("calls_handled")
+  leadsQualified     Int      @default(0) @map("leads_qualified")
+  appointmentsBooked Int      @default(0) @map("appointments_booked")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  calls        Call[]
+  appointments Appointment[]
+
+  @@index([businessId])
+  @@map("ai_employees")
+}
+
+model Call {
+  id           String      @id @default(cuid())
+  businessId   String      @map("business_id")
+  business     Business    @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  aiEmployeeId String?     @map("ai_employee_id")
+  aiEmployee   AiEmployee? @relation(fields: [aiEmployeeId], references: [id], onDelete: SetNull)
+  callerName   String?     @map("caller_name")
+  callerPhone  String      @map("caller_phone")
+  duration     Int
+  status       String
+  outcome      String?
+  summary      String?
+  createdAt    DateTime    @default(now()) @map("created_at")
+
+  @@index([businessId, createdAt])
+  @@map("calls")
+}
+
+model Appointment {
+  id            String      @id @default(cuid())
+  businessId    String      @map("business_id")
+  business      Business    @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  aiEmployeeId  String?     @map("ai_employee_id")
+  aiEmployee    AiEmployee? @relation(fields: [aiEmployeeId], references: [id], onDelete: SetNull)
+  customerName  String      @map("customer_name")
+  customerPhone String?     @map("customer_phone")
+  service       String?
+  scheduledAt   DateTime    @map("scheduled_at")
+  status        String      @default("scheduled")
+  source        String?
+  createdAt     DateTime    @default(now()) @map("created_at")
+
+  @@index([businessId, scheduledAt])
+  @@map("appointments")
+}
+
+model RevenueRecord {
+  id          String   @id @default(cuid())
+  businessId  String   @map("business_id")
+  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  date        DateTime @db.Date
+  amount      Decimal  @db.Decimal(10, 2)
+  source      String?
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([businessId, date])
+  @@map("revenue_records")
 }
