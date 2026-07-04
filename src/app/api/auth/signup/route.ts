@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { getApiErrorResponse, logApiError } from "@/lib/api-error";
+import { assertProductionEnv } from "@/lib/env";
 import { sendVerificationEmail } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { generateToken, getTokenExpiry, normalizeEmail } from "@/lib/tokens";
@@ -8,6 +9,7 @@ import { signupSchema } from "@/lib/validations/auth";
 
 export async function POST(request: Request) {
   try {
+    assertProductionEnv("Signup");
     const body = await request.json();
     const parsed = signupSchema.safeParse(body);
 

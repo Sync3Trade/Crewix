@@ -16,12 +16,9 @@ export function logApiError(context: string, error: unknown) {
 
 export function getApiErrorResponse(error: unknown, fallback: string) {
   const message = getErrorMessage(error);
-  const exposeDetails =
-    process.env.NODE_ENV !== "production" ||
-    process.env.EXPOSE_API_ERRORS === "true";
 
   return {
-    message: exposeDetails ? message : fallback,
-    details: exposeDetails ? message : undefined,
+    message,
+    details: message,
   };
 }
