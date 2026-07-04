@@ -81,7 +81,7 @@ export function Features() {
         <SectionHeader
           badge="Features"
           title="Everything your AI workforce needs"
-          description="From the first ring to the final follow-up, Crewix handles the entire customer communication lifecycle so you can focus on growing your business."
+          description="From the first ring to the final follow-up, VertexWork handles the entire customer communication lifecycle so you can focus on growing your business."
         />
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

@@ -7,7 +7,7 @@ import { auth } from "@/lib/auth";
 import { isStripeConfigured } from "@/lib/stripe";
 import { redirect } from "next/navigation";
 
-export const metadata = { title: "Billing — Crewix" };
+export const metadata = { title: "Billing — VertexWork" };
 
 export default async function BillingPage({
   searchParams,
@@ -35,7 +35,7 @@ export default async function BillingPage({
 
       {params.success && (
         <div className="rounded-xl bg-emerald-500/10 px-4 py-3 text-sm text-emerald-600 dark:text-emerald-400">
-          Subscription activated successfully! Welcome to Crewix.
+          Subscription activated successfully! Welcome to VertexWork.
         </div>
       )}
 

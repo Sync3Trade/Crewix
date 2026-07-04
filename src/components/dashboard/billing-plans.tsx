@@ -125,7 +125,7 @@ export function BillingPlans({ currentPlan, subscriptionStatus }: BillingPlansPr
                   Current plan · {formatPlanStatus(subscriptionStatus)}
                 </div>
               ) : planId === "enterprise" ? (
-                <Button variant="outline" size="sm" href="mailto:sales@crewix.com">
+                <Button variant="outline" size="sm" href="mailto:sales@vertexwork.com">
                   Contact Sales
                 </Button>
               ) : (

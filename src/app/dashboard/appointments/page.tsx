@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { Calendar } from "lucide-react";
 import { redirect } from "next/navigation";
 
-export const metadata = { title: "Appointments — Crewix" };
+export const metadata = { title: "Appointments — VertexWork" };
 
 function formatStatus(status: string) {
   return status.replace("_", " ").replace(/\b\w/g, (c) => c.toUpperCase());

@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { Bot, Pause, Play } from "lucide-react";
 import { redirect } from "next/navigation";
 
-export const metadata = { title: "AI Employees — Crewix" };
+export const metadata = { title: "AI Employees — VertexWork" };
 
 export default async function AiEmployeesPage() {
   const session = await auth();

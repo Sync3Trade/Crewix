@@ -11,7 +11,7 @@ const steps = [
     icon: Plug,
     title: "Connect your business",
     description:
-      "Link your phone number, calendar, and CRM in a few clicks. Crewix integrates with the tools you already use.",
+      "Link your phone number, calendar, and CRM in a few clicks. VertexWork integrates with the tools you already use.",
   },
   {
     step: "02",
@@ -48,7 +48,7 @@ export function HowItWorks() {
         <SectionHeader
           badge="How It Works"
           title="Go live in four simple steps"
-          description="No engineering team required. Most businesses are up and running with Crewix in under 15 minutes."
+          description="No engineering team required. Most businesses are up and running with VertexWork in under 15 minutes."
         />
 
         <div className="relative">

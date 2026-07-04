@@ -4,8 +4,8 @@ import { AuthLayout } from "@/components/auth/auth-layout";
 import { ForgotPasswordForm } from "@/components/auth/forgot-password-form";
 
 export const metadata = {
-  title: "Forgot Password — Crewix",
-  description: "Reset your Crewix account password",
+  title: "Forgot Password — VertexWork",
+  description: "Reset your VertexWork account password",
 };
 
 export default function ForgotPasswordPage() {

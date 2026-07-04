@@ -132,7 +132,7 @@ export function Pricing() {
                 variant={plan.popular ? "primary" : "outline"}
                 href={
                   plan.id === "enterprise"
-                    ? "mailto:sales@crewix.com"
+                    ? "mailto:sales@vertexwork.com"
                     : `/signup?plan=${plan.id}`
                 }
               >

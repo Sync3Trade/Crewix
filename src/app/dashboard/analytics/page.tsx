@@ -6,7 +6,7 @@ import { auth } from "@/lib/auth";
 import { BarChart3, Clock, Phone, Target } from "lucide-react";
 import { redirect } from "next/navigation";
 
-export const metadata = { title: "Analytics — Crewix" };
+export const metadata = { title: "Analytics — VertexWork" };
 
 function formatDuration(seconds: number) {
   const m = Math.floor(seconds / 60);

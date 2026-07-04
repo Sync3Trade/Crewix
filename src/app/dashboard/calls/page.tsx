@@ -5,7 +5,7 @@ import { auth } from "@/lib/auth";
 import { Phone } from "lucide-react";
 import { redirect } from "next/navigation";
 
-export const metadata = { title: "Calls — Crewix" };
+export const metadata = { title: "Calls — VertexWork" };
 
 function formatDuration(seconds: number) {
   const m = Math.floor(seconds / 60);

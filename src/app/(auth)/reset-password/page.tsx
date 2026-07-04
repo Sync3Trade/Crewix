@@ -4,8 +4,8 @@ import { AuthLayout } from "@/components/auth/auth-layout";
 import { ResetPasswordForm } from "@/components/auth/reset-password-form";
 
 export const metadata = {
-  title: "Reset Password — Crewix",
-  description: "Create a new password for your Crewix account",
+  title: "Reset Password — VertexWork",
+  description: "Create a new password for your VertexWork account",
 };
 
 export default async function ResetPasswordPage({
