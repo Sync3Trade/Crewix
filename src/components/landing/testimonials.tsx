@@ -8,7 +8,7 @@ import { Quote, Star } from "lucide-react";
 const testimonials = [
   {
     quote:
-      "We were missing 40% of our inbound calls before Crewix. Now every call gets answered, qualified, and booked. Our appointment volume has nearly doubled in two months.",
+      "We were missing 40% of our inbound calls before VertexWork. Now every call gets answered, qualified, and booked. Our appointment volume has nearly doubled in two months.",
     author: "Sarah Mitchell",
     role: "Owner",
     company: "Mitchell Dental Group",
@@ -17,7 +17,7 @@ const testimonials = [
   },
   {
     quote:
-      "During storm season, our phones ring off the hook. Crewix handles the overflow flawlessly — scheduling inspections and sending follow-ups while our crew is on rooftops.",
+      "During storm season, our phones ring off the hook. VertexWork handles the overflow flawlessly — scheduling inspections and sending follow-ups while our crew is on rooftops.",
     author: "Mike Torres",
     role: "Operations Director",
     company: "Summit Roofing Co.",
@@ -26,7 +26,7 @@ const testimonials = [
   },
   {
     quote:
-      "As a solo attorney, I can't be on the phone all day. Crewix screens every inquiry, books consultations, and only sends me the cases worth my time. Game changer.",
+      "As a solo attorney, I can't be on the phone all day. VertexWork screens every inquiry, books consultations, and only sends me the cases worth my time. Game changer.",
     author: "James Whitfield",
     role: "Managing Partner",
     company: "Whitfield & Associates",
@@ -35,7 +35,7 @@ const testimonials = [
   },
   {
     quote:
-      "We deployed Crewix across three dealership locations in one afternoon. Test drive bookings are up 45% and our BDC team can finally focus on closing instead of answering.",
+      "We deployed VertexWork across three dealership locations in one afternoon. Test drive bookings are up 45% and our BDC team can finally focus on closing instead of answering.",
     author: "Lisa Chen",
     role: "General Manager",
     company: "Prestige Auto Group",
@@ -53,7 +53,7 @@ const testimonials = [
   },
   {
     quote:
-      "Crewix understands real estate. It qualifies buyers, schedules showings, and nurtures leads with personalized follow-ups. My agents love having a tireless assistant.",
+      "VertexWork understands real estate. It qualifies buyers, schedules showings, and nurtures leads with personalized follow-ups. My agents love having a tireless assistant.",
     author: "Rachel Adams",
     role: "Broker Owner",
     company: "Adams Realty Partners",
