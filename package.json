@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && prisma migrate deploy && next build",
+    "build": "prisma generate && node scripts/deploy-db.mjs && next build",
+    "vercel-build": "prisma generate && node scripts/deploy-db.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
+    "db:deploy": "node scripts/deploy-db.mjs",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio"
   },

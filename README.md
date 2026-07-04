@@ -125,22 +125,47 @@ src/
 | `npm run start` | Start production server |
 | `npm run lint` | Run ESLint |
 | `npm run db:push` | Push Prisma schema to database |
+| `npm run db:deploy` | Apply pending migrations to the database |
 | `npm run db:migrate` | Run database migrations |
 | `npm run db:studio` | Open Prisma Studio |
 
 ## Vercel Deployment
 
-Set these environment variables in **Vercel → Project → Settings → Environment Variables** for **Production** and **Preview** (and enable them for **Build** where applicable):
+Set these environment variables in **Vercel → Project → Settings → Environment Variables** for **Production** and **Preview**. Enable each variable for **Build** and **Runtime**:
 
 | Variable | Required | Notes |
 |----------|----------|-------|
 | `DATABASE_URL` | Yes | PostgreSQL connection string. For Neon/Supabase, include `?sslmode=require`. |
+| `DIRECT_URL` | Recommended | Direct (non-pooled) connection for migrations. On Neon, use the non-pooled URL. If omitted, the build falls back to `DATABASE_URL`. |
 | `AUTH_SECRET` | Yes | Generate with `openssl rand -base64 32` |
 | `AUTH_TRUST_HOST` | Recommended | Set to `true` on Vercel |
 | `AUTH_URL` | Optional | Defaults to `https://<your-vercel-domain>` via `VERCEL_URL` |
 | `RESEND_API_KEY` | Optional | Emails log to server console if omitted |
 
-The production build runs `prisma migrate deploy` to create database tables automatically.
+### Vercel build settings
+
+The repo includes `vercel.json` so every deploy runs migrations before the app builds:
+
+- **Build Command:** `npm run vercel-build`
+- **What it runs:** `prisma generate` → `prisma migrate deploy` → `next build`
+
+In **Vercel → Project → Settings → Build & Deployment**, leave the Build Command empty (use `vercel.json`) or set it explicitly to:
+
+```bash
+npm run vercel-build
+```
+
+Do **not** override it to `next build` only — that skips migrations and causes `P2021` (table does not exist).
+
+### Apply migrations immediately (one-time fix)
+
+If production is already deployed but tables are missing, run this locally with your production `DATABASE_URL`:
+
+```bash
+DATABASE_URL="your-production-url" DIRECT_URL="your-direct-url" npm run db:deploy
+```
+
+Then redeploy on Vercel so future deploys keep the schema in sync.
 
 Check deployment health after configuring variables:
 
