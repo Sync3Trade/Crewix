@@ -29,7 +29,7 @@ export function CtaBanner() {
               Your next hire is an AI employee
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-              Join thousands of businesses using Crewix to capture every lead,
+              Join thousands of businesses using VertexWork to capture every lead,
               book more appointments, and deliver exceptional customer
               experiences — around the clock.
             </p>
