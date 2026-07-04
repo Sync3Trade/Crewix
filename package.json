@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && node scripts/deploy-db.mjs && next build",
-    "vercel-build": "prisma generate && node scripts/deploy-db.mjs && next build",
+    "build": "node scripts/vercel-build.mjs",
+    "vercel-build": "node scripts/vercel-build.mjs",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",
