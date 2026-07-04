@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
+import { getApiErrorResponse, logApiError } from "@/lib/api-error";
 import { sendVerificationEmail } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { generateToken, getTokenExpiry, normalizeEmail } from "@/lib/tokens";
@@ -58,9 +59,14 @@ export async function POST(request: Request) {
       message: "Account created. Please check your email to verify your account.",
     });
   } catch (error) {
-    console.error("Signup error:", error);
+    logApiError("Signup error", error);
+    const { message, details } = getApiErrorResponse(
+      error,
+      "Something went wrong. Please try again."
+    );
+
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      { error: message, ...(details ? { details } : {}) },
       { status: 500 }
     );
   }
