@@ -140,7 +140,7 @@ Set these environment variables in **Vercel → Project → Settings → Environ
 | `AUTH_URL` | Optional | Defaults to `https://<your-vercel-domain>` via `VERCEL_URL` |
 | `RESEND_API_KEY` | Optional | Emails log to server console if omitted |
 
-The production build verifies required variables and runs `prisma migrate deploy` to create database tables automatically.
+The production build runs `prisma migrate deploy` to create database tables automatically.
 
 Check deployment health after configuring variables:
 
