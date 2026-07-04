@@ -47,6 +47,8 @@ openssl rand -base64 32
 npm run db:push
 ```
 
+For production (Vercel), the build runs `prisma migrate deploy` automatically. Ensure `DATABASE_URL` is set in your Vercel project environment variables before deploying.
+
 ### 5. Run the development server
 
 ```bash
