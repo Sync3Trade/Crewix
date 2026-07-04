@@ -144,18 +144,24 @@ Set these environment variables in **Vercel → Project → Settings → Environ
 
 ### Vercel build settings
 
-The repo includes `vercel.json` so every deploy runs migrations before the app builds:
-
-- **Build Command:** `npm run vercel-build`
-- **What it runs:** `prisma generate` → `prisma migrate deploy` → `next build`
-
-In **Vercel → Project → Settings → Build & Deployment**, leave the Build Command empty (use `vercel.json`) or set it explicitly to:
+`vercel.json` sets the build command to:
 
 ```bash
-npm run vercel-build
+node scripts/vercel-build.mjs
 ```
 
-Do **not** override it to `next build` only — that skips migrations and causes `P2021` (table does not exist).
+That script runs, in order (each step is logged clearly in the Vercel build output):
+
+1. `prisma generate`
+2. `prisma migrate deploy`
+3. `next build`
+
+In **Vercel → Project → Settings → Build & Deployment**, either:
+
+- Leave **Build Command** empty (recommended — `vercel.json` controls it), or
+- Set it explicitly to: `node scripts/vercel-build.mjs`
+
+Do **not** use `next build` alone — that skips migrations and causes `P2021`.
 
 ### Apply migrations immediately (one-time fix)
 
