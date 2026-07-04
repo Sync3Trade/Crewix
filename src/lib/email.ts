@@ -1,3 +1,4 @@
+import { getAuthUrl } from "@/lib/env";
 import { Resend } from "resend";
 
 const resend = process.env.RESEND_API_KEY
@@ -5,7 +6,7 @@ const resend = process.env.RESEND_API_KEY
   : null;
 
 const fromEmail = process.env.EMAIL_FROM ?? "VertexWork <onboarding@vertexwork.com>";
-const appUrl = process.env.AUTH_URL ?? "http://localhost:3000";
+const appUrl = getAuthUrl();
 
 interface SendEmailOptions {
   to: string;

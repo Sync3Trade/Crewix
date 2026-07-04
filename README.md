@@ -128,6 +128,28 @@ src/
 | `npm run db:migrate` | Run database migrations |
 | `npm run db:studio` | Open Prisma Studio |
 
+## Vercel Deployment
+
+Set these environment variables in **Vercel → Project → Settings → Environment Variables** for **Production** and **Preview** (and enable them for **Build** where applicable):
+
+| Variable | Required | Notes |
+|----------|----------|-------|
+| `DATABASE_URL` | Yes | PostgreSQL connection string. For Neon/Supabase, include `?sslmode=require`. |
+| `AUTH_SECRET` | Yes | Generate with `openssl rand -base64 32` |
+| `AUTH_TRUST_HOST` | Recommended | Set to `true` on Vercel |
+| `AUTH_URL` | Optional | Defaults to `https://<your-vercel-domain>` via `VERCEL_URL` |
+| `RESEND_API_KEY` | Optional | Emails log to server console if omitted |
+
+The production build verifies required variables and runs `prisma migrate deploy` to create database tables automatically.
+
+Check deployment health after configuring variables:
+
+```bash
+curl https://your-app.vercel.app/api/health
+```
+
+A healthy deployment returns `"status": "ok"` with database connected.
+
 ## Email in Development
 
 Without a `RESEND_API_KEY`, verification and password reset emails are logged to the server console. Check your terminal for links when testing locally.
