@@ -1,4 +1,4 @@
-# Crewix
+# VertexWork
 
 AI workforce platform that helps businesses automate calls, lead qualification, appointment booking, and customer communication.
 
@@ -85,7 +85,7 @@ src/
 ├── components/
 │   ├── auth/             # Auth forms and layout
 │   ├── landing/          # Marketing page sections
-│   ├── onboarding/       # Onboarding wizard
+│   ├── onboarding/     # Onboarding wizard
 │   └── ui/               # Reusable UI components
 ├── lib/                  # Auth, database, email, validations
 └── middleware.ts         # Route protection
