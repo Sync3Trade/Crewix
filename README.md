@@ -136,7 +136,6 @@ Set these environment variables in **Vercel → Project → Settings → Environ
 | Variable | Required | Notes |
 |----------|----------|-------|
 | `DATABASE_URL` | Yes | PostgreSQL connection string. For Neon/Supabase, include `?sslmode=require`. |
-| `DIRECT_URL` | Recommended | Direct (non-pooled) connection for migrations. On Neon, use the non-pooled URL. If omitted, the build falls back to `DATABASE_URL`. |
 | `AUTH_SECRET` | Yes | Generate with `openssl rand -base64 32` |
 | `AUTH_TRUST_HOST` | Recommended | Set to `true` on Vercel |
 | `AUTH_URL` | Optional | Defaults to `https://<your-vercel-domain>` via `VERCEL_URL` |
@@ -162,6 +161,23 @@ In **Vercel → Project → Settings → Build & Deployment**, either:
 - Set it explicitly to: `node scripts/vercel-build.mjs`
 
 Do **not** use `next build` alone — that skips migrations and causes `P2021`.
+
+### Verify which commit is live
+
+After deploying, check:
+
+```bash
+curl https://your-app.vercel.app/api/version
+```
+
+Compare the `commit` value to the latest commit on `main` in GitHub. If they differ, Vercel is still serving an old deployment.
+
+### If Vercel is stuck on an old deployment
+
+1. **Vercel → Project → Settings → Git** — confirm **Production Branch** is `main`
+2. **Vercel → Deployments** — check if recent deploys **failed** (failed builds keep the old version live)
+3. **Redeploy manually**: Deployments → latest `main` deployment → ⋯ → **Redeploy** → enable **Clear build cache**
+4. Confirm build logs show `VertexWork Vercel build` and `Commit: <sha>` matching GitHub `main`
 
 ### Apply migrations immediately (one-time fix)
 
