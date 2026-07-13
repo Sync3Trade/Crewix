@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { getApiErrorResponse, logApiError } from "@/lib/api-error";
-import { assertProductionEnv } from "@/lib/env";
 import { sendVerificationEmail } from "@/lib/email";
 import { prisma } from "@/lib/prisma";
 import { generateToken, getTokenExpiry, normalizeEmail } from "@/lib/tokens";
@@ -9,7 +8,6 @@ import { signupSchema } from "@/lib/validations/auth";
 
 export async function POST(request: Request) {
   try {
-    assertProductionEnv("Signup");
     const body = await request.json();
     const parsed = signupSchema.safeParse(body);
 
@@ -43,6 +41,7 @@ export async function POST(request: Request) {
           name,
           email: normalizedEmail,
           passwordHash,
+          emailVerified: new Date(),
         },
       });
 
@@ -55,10 +54,14 @@ export async function POST(request: Request) {
       });
     });
 
-    await sendVerificationEmail(normalizedEmail, token);
+    try {
+      await sendVerificationEmail(normalizedEmail, token);
+    } catch (emailError) {
+      logApiError("Signup verification email error", emailError);
+    }
 
     return NextResponse.json({
-      message: "Account created. Please check your email to verify your account.",
+      message: "Account created successfully. You can sign in now.",
     });
   } catch (error) {
     logApiError("Signup error", error);

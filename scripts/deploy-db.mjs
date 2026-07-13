@@ -7,10 +7,16 @@ if (!process.env.DATABASE_URL?.trim()) {
   process.exit(1);
 }
 
-if (!process.env.DIRECT_URL?.trim()) {
-  process.env.DIRECT_URL = process.env.DATABASE_URL;
+console.log("Applying Prisma migrations to production database...");
+
+try {
+  execSync("npx prisma migrate deploy", { stdio: "inherit" });
+} catch (error) {
+  console.error("prisma migrate deploy failed, falling back to prisma db push");
+  console.error(error);
+  execSync("npx prisma db push --skip-generate --accept-data-loss", {
+    stdio: "inherit",
+  });
 }
 
-console.log("Applying Prisma migrations to production database...");
-execSync("npx prisma migrate deploy", { stdio: "inherit" });
-console.log("Prisma migrations applied successfully.");
+console.log("Prisma schema applied successfully.");

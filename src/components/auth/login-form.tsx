@@ -17,6 +17,7 @@ export function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") ?? "/onboarding";
   const verified = searchParams.get("verified") === "true";
+  const registered = searchParams.get("registered") === "true";
 
   const [serverError, setServerError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,6 +57,12 @@ export function LoginForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">
+      {registered && (
+        <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-4 py-3 text-sm text-emerald-600 dark:text-emerald-400">
+          Account created successfully. Sign in with your email and password.
+        </div>
+      )}
+
       {verified && (
         <div className="flex items-center gap-2 rounded-xl bg-emerald-500/10 px-4 py-3 text-sm text-emerald-600 dark:text-emerald-400">
           Email verified successfully! You can now sign in.
