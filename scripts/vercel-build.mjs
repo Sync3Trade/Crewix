@@ -9,6 +9,12 @@ function run(command, label) {
   execSync(command, { stdio: "inherit" });
 }
 
+console.log("");
+console.log("VertexWork Vercel build");
+console.log("Commit:", process.env.VERCEL_GIT_COMMIT_SHA ?? "unknown");
+console.log("Branch:", process.env.VERCEL_GIT_COMMIT_REF ?? "unknown");
+console.log("");
+
 if (!process.env.DATABASE_URL?.trim()) {
   console.error(
     "DATABASE_URL is not set. In Vercel, enable DATABASE_URL for the Build environment."
