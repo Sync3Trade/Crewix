@@ -76,9 +76,7 @@ export function SignupForm() {
         return;
       }
 
-      router.push(
-        `/verify-email?email=${encodeURIComponent(data.email)}&sent=true`
-      );
+      router.push("/login?registered=true");
     } catch {
       setServerError("Something went wrong. Please try again.");
     } finally {
